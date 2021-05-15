@@ -20,7 +20,6 @@ describe('AlgoritmosCompressao class', () => {
 		const returnValue: string = example.comprimeFequenciaCaractere(param);
 		expect(returnValue).to.equal('5A3H1F4G2B1P3E6C1D4L2R', 'Retorna o valor comprimido');
 	});
-	
 	it('Teste do comprimeFequenciaCaractere com parametro: A', () => {
 		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
 		const param: string = 'A';
