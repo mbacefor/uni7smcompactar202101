@@ -14,4 +14,10 @@ describe('AlgoritmosCompressao class', () => {
 		const returnValue: string = example.exampleMethod(param);
 		expect(returnValue).to.equal(param, 'returns the value passed as a parameter');
 	});
+	it('Teste do comprimeFequenciaCaractere com parametro: AAAAAHHHFGGGGBBPEEECCCCCCDLLLLRR', () => {
+		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
+		const param: string = 'AAAAAHHHFGGGGBBPEEECCCCCCDLLLLRR';
+		const returnValue: string = example.comprimeFequenciaCaractere(param);
+		expect(returnValue).to.equal('5A3H1F4G2B1P3E6C1D4L2R', 'Retorna o valor comprimido');
+	});
 });
