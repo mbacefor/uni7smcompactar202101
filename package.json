@@ -35,7 +35,8 @@
     "prepare": "npm run build",
     "test": "mocha --require source-map-support/register --require ts-node/register --extension ts  test/**/*.ts",
     "upgrade": "npx npm-check -u",
-    "version": "npm run build && npm run changelog:update"
+    "version": "npm run build && npm run changelog:update",
+    "start": "npm run build && node ./dist/index.js "
   },
   "devDependencies": {
     "@types/chai": "^4.2.18",

@@ -34,7 +34,7 @@ export class AlgoritmosCompressao {
 			while (caracter === param.charAt(++i)) {
 				repeticoes++;
 			}
-			textoComprimido +=  repeticoes + caracter;
+			textoComprimido += repeticoes + caracter;
 		}
 
 		return textoComprimido;
@@ -46,11 +46,10 @@ const algoritmosCompressao = new AlgoritmosCompressao();
 
 const textoOrigem = 'AAAAAHHHFGGGGBBPEEECCCCCCDLLLLRR';
 
-// const textoSaida = '5A3H1F4G2B1P3E6C1D4L2R';
+const textoSaida = '5A3H1F4G2B1P3E6C1D4L2R';
 
-algoritmosCompressao.comprimeFequenciaCaractere(textoOrigem);
+const textoSaidaCompactados = algoritmosCompressao.comprimeFequenciaCaractere(textoOrigem);
 
+const logger: Logger = Logger.getLogger({ name: 'principal' });
 
-
-
-
+logger.debug('Saida:' + textoSaidaCompactados + ' : ' + (textoSaida === textoSaidaCompactados));
