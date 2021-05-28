@@ -1,6 +1,7 @@
 'use strict';
 
 import { Logger } from 'sitka';
+import { Util } from './util';
 
 export class AlgoritmosCompressao {
 	/* Private Instance Fields */
@@ -13,17 +14,15 @@ export class AlgoritmosCompressao {
 		this._logger = Logger.getLogger({ name: this.constructor.name });
 	}
 
-	/* Public Instance Methods */
-
-	public exampleMethod(param: string): string {
-		this._logger.debug('Received: ' + param);
-		return param;
-	}
-
-	/* Public Instance Methods */
-
+	/**
+	 * Método que comprime uma sequencia de string usando o algoritmo de
+	 * frequencia de caracteres
+	 * @param param
+	 * @returns
+	 */
 	public comprimeFequenciaCaractere(param: string): string {
-		this._logger.debug('Received: ' + param);
+		this._logger.debug('Entrada: ' + param);
+		this._logger.debug('Entrada(B): ' + Util.string2bin(param));
 
 		let i = 0;
 		let textoComprimido: string = '';
@@ -36,20 +35,37 @@ export class AlgoritmosCompressao {
 			}
 			textoComprimido += repeticoes + caracter;
 		}
-
+		this._logger.debug('Saida: ' + textoComprimido);
+		this._logger.debug('Saida (B): ' + Util.string2bin(textoComprimido));
 		return textoComprimido;
 	}
 
+/**
+ * Metodo que descomprime uma sequencia de caracteres usando o algoritmo de
+ * frequencia de caracteres
+ * @param param
+ * @returns
+ */
+	public descomprimeFequenciaCaractere(param: string): string {
+		this._logger.debug('Received: ' + param);
+		let i = 0;
+		let textoDescomprimido: string = '';
+		// fazer loop em todos os caracteres da string de entrada
+		while (i < param.length) {
+			let j: number = 0;
+			while (!isNaN(Number(param.substring(i, i + j + 1)))) {
+				j++;
+			}
+			const numeroRepeticoes: number = Number(param.substring(i, i + j)).valueOf();
+			i = i + j;
+			const caracter = param.charAt(i);
+			let index = 0;
+			for (; index < numeroRepeticoes; index++) {
+				textoDescomprimido = textoDescomprimido + caracter;
+			}
+			i++;
+		}
+		this._logger.debug('Return: ' + textoDescomprimido);
+		return textoDescomprimido;
+	}
 }
-
-const algoritmosCompressao = new AlgoritmosCompressao();
-
-const textoOrigem = 'AAAAAHHHFGGGGBBPEEECCCCCCDLLLLRR';
-
-const textoSaida = '5A3H1F4G2B1P3E6C1D4L2R';
-
-const textoSaidaCompactados = algoritmosCompressao.comprimeFequenciaCaractere(textoOrigem);
-
-const logger: Logger = Logger.getLogger({ name: 'principal' });
-
-logger.debug('Saida:' + textoSaidaCompactados + ' : ' + (textoSaida === textoSaidaCompactados));

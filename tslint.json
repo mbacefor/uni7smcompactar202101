@@ -3,11 +3,13 @@
     "extends": [
         "tslint:recommended"
     ],
-    "jsRules": {},
+    "jsRules": {
+        
+    },
     "rules": {
     	"variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],
-        "indent": [true, "tabs"],
-        "quotemark": [true, "single", "avoid-escape", "avoid-template"]
+        "quotemark": [true, "single", "avoid-escape", "avoid-template"],
+        "no-bitwise": false
     },
     "rulesDirectory": []
 }
