@@ -61,6 +61,6 @@
     }
   },
   "dependencies": {
-    "sitka": "^1.0.5"
+    "sitka": "^1.0.6"
   }
 }
